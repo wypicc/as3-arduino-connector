@@ -6,13 +6,13 @@ Connecting Arduino Prototyping board to Adobe AIR through an AIR Native Extensio
 =AIR Native Extensions=
 AIR Native Extensions, or ANEs are compiled code that includes both Native code (specific code for Windows, Mac, or one of the many mobile platforms) and ActionScript code that allows developers to extend the feature set that is available in AIR or the Flash Player.
 
-This ANE exposes the Serial port that is created by the Arduino Uno, Arduino LilyPad, Arduino Mega, Arduino Duemilanove and various other Arduino Compatibles.  
+This ANE exposes the Serial port that is created by the Arduino Uno, Arduino LilyPad, Arduino Mega, Arduino Duemilanove and various other Arduino Compatibles.  It can also be used with any device that communicates via a serial port (COM port).
 
 ==Background==
 The ArduinoConnector mimics the _flash.net.Socket_ class that is internal to the Flex Framework.  It was chosen to mimic this class because many of the more popular Arduino projects target the Socket class because they use serProxy to transport the data to the serial port. 
 
 ==Use==
-Instruct your IDE to include the ANE that you downloaded from the Downloads tab.  In Flash Builder 4.6, right click on your project, go to the Flash Builder Path properties, click on the Native Extensions tab, and add the ANE.  
+Instruct your IDE to include the ANE that you downloaded from the Downloads tab.  In Flash Builder 4.6+, right click on your project, go to the Flash Builder Path properties, click on the Native Extensions tab, and add the ANE.  
 
 Next, add a new ArduinoConnector instance.  You will need to pass the COM port that the Arduino is connected to, along with the baud rate to the `connect()` function (as3Glue uses 57600,  most Arduino samples use 9600).  You can get a list of valid COM ports for your operating system by taking in the `getComPorts()` array.  Also, add a function that will "dispose" or clean up the connection when you are finished (if you do not do this, the AIR runtime may crash when your app closes).
 {{{
